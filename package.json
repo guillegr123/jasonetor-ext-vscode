@@ -11,6 +11,7 @@
         "Other"
     ],
     "activationEvents": [
+        "onLanguage:json",
         "onCommand:extension.sayHello"
     ],
     "main": "./out/extension",
@@ -19,6 +20,10 @@
             {
                 "command": "extension.sayHello",
                 "title": "Hello World"
+            },
+            {
+                "command": "extension.sideEditor",
+                "title": "JSON editor"
             }
         ]
     },
