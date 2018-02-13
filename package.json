@@ -12,17 +12,13 @@
     ],
     "activationEvents": [
         "onLanguage:json",
-        "onCommand:extension.sayHello"
+        "onCommand:extension.jsonSideEditor"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
-            },
-            {
-                "command": "extension.sideEditor",
+                "command": "extension.jsonSideEditor",
                 "title": "JSON editor"
             }
         ]
