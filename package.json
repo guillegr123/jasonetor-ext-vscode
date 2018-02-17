@@ -4,8 +4,24 @@
     "description": "Jasonetor (JaSONE[di]tor) - An (eventually) friendly JSON renderer and graphic editor extension for Visual Studio Code.",
     "version": "0.0.1",
     "publisher": "guillegr123",
+    "author": {
+        "name": "Guillermo Gutierrez",
+        "email": "guillegr123@gmail.com"
+    },
+    "homepage": "https://github.com/guillegr123/jasonetor-ext-vscode/blob/master/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/guillegr123/jasonetor-ext-vscode.git"
+    },
+    "bugs": {
+        "url": "https://github.com/guillegr123/jasonetor-ext-vscode/issues"
+    },
+    "keywords": [
+        "JSON"
+    ],
+    "license": "Apache-2.0",
     "engines": {
-        "vscode": "^1.20.0"
+        "vscode": "^1.18.0"
     },
     "categories": [
         "Other"
