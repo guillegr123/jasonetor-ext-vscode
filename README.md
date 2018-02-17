@@ -1,69 +1,32 @@
 # Jasonetor
+
 Jasonetor (JaSONE[di]tor) - An (eventually) friendly JSON renderer and graphic editor extension for Visual Studio Code.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Currently allows to visualize JSON in a tree view, and select nodes.
 
-For example if there is an image subfolder under your extension project workspace:
+As a very very very early version, is not optimized, and requires internet connection. Please bear with the developer ;)
 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-- Node JS
-- NPM
-
-## Notes
-This was used to create the extension:
-- Yeoman generator: ```npm install -g yo generator-code```
-- Yeoman VS Code Extension generator: ```yo code```
+## Available Commands
+* JSON Editor (extension.jsonSideEditor)
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+None, for the time being.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+* Does not work without internet connection.
+* Does not keep node expand and selection, when JSON is edited.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
+- JSON tree view.
+- Node selection highlighting.
 
-Initial release of ...
+## Source
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+[GitHub](https://github.com/guillegr123/jasonetor-ext-vscode)
