@@ -45,10 +45,92 @@ export function activate(context: vscode.ExtensionContext) {
 
 		private snippet(text: string): string {
 			return `
-                <body>
-                    <pre>
-                        ${text}
-                    </pre>
+				<body>
+					<link rel="stylesheet" type="text/css" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css">
+					<div id="app">
+						<tree-menu :props="Object.keys(tree)" :jobject="tree" :depth="0" :label="'Root'"></tree-menu>
+					</div>
+					<style>
+						.tree-menu.selected { background-color: yellow; color: black }
+					</style>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.0/vue.js">
+					</script>
+					<script type="text/x-template" id="tree-menu">
+						<div class="tree-menu" :class="selectedClasses">
+							<div class="label-wrapper">
+								<div :style="indent" :class="labelClasses">
+									<i v-if="hasChildren" class="fa" :class="iconClasses" @click="toggleChildren"></i>
+									<b @click="toggleSelected">{{ label }}:</b>
+		  							<span v-if="!hasChildren" >{{ jobject }}</span>
+								</div>
+							</div>
+							<tree-menu v-if="hasChildren && showChildren" v-for="prop in props" :props="Object.keys(jobject[prop])" :jobject="jobject[prop]" :label="prop" :depth="depth + 2">
+							</tree-menu>
+						</div>
+					</script>
+					<script>
+						let tree = ${text};
+				
+						function uuidv4() {
+							return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+							  	var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+							  	return v.toString(16);
+							});
+						};
+
+						var eventBus = new Vue();
+
+						Vue.component('tree-menu', { 
+							template: '#tree-menu',
+							props: [ 'props', 'jobject', 'label', 'depth' ],
+							created () {
+								eventBus.$on('node.onSelected', (selectedId) => {
+									if (this.id !== selectedId) {
+										this.selected = false;
+									}
+								});
+							},
+							data() {
+								return {
+									id: uuidv4(),
+									showChildren: true,
+									hasChildren: typeof(this.jobject) == 'object' || typeof(this.jobject) == 'Array',
+									selected: false,
+									indent: { 'padding-left': \`\${this.depth}em\` }
+								}
+							},
+							computed: {
+								iconClasses() {
+									return {
+										'fa-plus-square-o': !this.showChildren,
+										'fa-minus-square-o': this.showChildren
+									}
+								},
+								labelClasses() {
+									return { 'has-children': this.hasChildren }
+								},
+								selectedClasses() {
+									return { 'selected': this.selected }
+								}
+							},
+							methods: {
+								toggleChildren() {
+									this.showChildren = !this.showChildren;
+								},
+								toggleSelected() {
+									this.selected = !this.selected;
+									eventBus.$emit('node.onSelected', this.id);
+								}
+							}
+						});
+				
+						new Vue({
+							el: '#app',
+							data: {
+								tree
+							}
+						});
+					</script>
 				</body>`;
 		}
 	}
