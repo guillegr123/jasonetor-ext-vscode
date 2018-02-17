@@ -1,0 +1,39 @@
+{
+    "name": "jasonetor",
+    "displayName": "Jasonetor",
+    "description": "Jasonetor (JaSONE[di]tor) - An (eventually) friendly JSON renderer and graphic editor extension for Visual Studio Code.",
+    "version": "0.0.1",
+    "publisher": "guillegr123",
+    "engines": {
+        "vscode": "^1.20.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onLanguage:json",
+        "onCommand:extension.jsonSideEditor"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.jsonSideEditor",
+                "title": "JSON editor"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    }
+}
