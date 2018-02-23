@@ -62,19 +62,12 @@ export function activate(context: vscode.ExtensionContext) {
 							  	return v.toString(16);
 							});
 						};
-
+				
 						var eventBus = new Vue();
 
 						Vue.component('tree-menu', { 
 							template: '#tree-menu',
 							props: [ 'props', 'jobject', 'label', 'depth' ],
-							created () {
-								eventBus.$on('node.onSelected', (selectedId) => {
-									if (this.id !== selectedId) {
-										this.selected = false;
-									}
-								});
-							},
 							data() {
 								return {
 									id: uuidv4(),
@@ -102,9 +95,20 @@ export function activate(context: vscode.ExtensionContext) {
 								toggleChildren() {
 									this.showChildren = !this.showChildren;
 								},
+								deselect(selectedId) {
+									if (this.id !== selectedId) {
+										this.selected = false;
+										eventBus.$off(this.deselect);
+									}
+								},
 								toggleSelected() {
-									this.selected = !this.selected;
-									eventBus.$emit('node.onSelected', this.id);
+									if (!this.selected) {
+										this.selected = true;
+										eventBus.$emit('node.onSelected', this.id);
+										eventBus.$on('node.onSelected', this.deselect);
+									} else {
+										this.deselect('');
+									}
 								}
 							}
 						});
