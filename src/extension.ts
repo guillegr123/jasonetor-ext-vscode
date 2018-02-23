@@ -10,7 +10,11 @@ export function activate(context: vscode.ExtensionContext) {
 		private _onDidChange = new vscode.EventEmitter<vscode.Uri>();
 
 		public provideTextDocumentContent(uri: vscode.Uri): string {
-			return this.createCssSnippet();
+			let editor = vscode.window.activeTextEditor;
+			if (!(editor.document.languageId === 'json')) {
+				return this.buildSimpleSnippet("Active editor doesn't show a JSON document - no JSON to edit.")
+			}
+			return this.buildRendererSnippet();
 		}
 
 		get onDidChange(): vscode.Event<vscode.Uri> {
@@ -21,29 +25,10 @@ export function activate(context: vscode.ExtensionContext) {
 			this._onDidChange.fire(uri);
 		}
 
-		private createCssSnippet() {
-			let editor = vscode.window.activeTextEditor;
-			if (!(editor.document.languageId === 'json')) {
-				return this.snippet("Active editor doesn't show a JSON document - no JSON to edit.")
-			}
-			return this.extractSnippet();
-		}
-
-		private extractSnippet(): string {
+		private buildRendererSnippet(): string {
 			let editor = vscode.window.activeTextEditor;
 			let text = editor.document.getText();
-			let selStart = editor.document.offsetAt(editor.selection.anchor);
-			let propStart = text.lastIndexOf('{', selStart);
-			let propEnd = text.indexOf('}', selStart);
 
-			if (propStart === -1 || propEnd === -1) {
-				return this.snippet("Cannot determine the rule's properties.");
-			} else {
-				return this.snippet(text);
-			}
-		}
-
-		private snippet(text: string): string {
 			return `
 				<body>
 					<link rel="stylesheet" type="text/css" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css">
@@ -132,6 +117,10 @@ export function activate(context: vscode.ExtensionContext) {
 						});
 					</script>
 				</body>`;
+		}
+
+		private buildSimpleSnippet(text: string): string {
+			return `<body>${text}</body>`
 		}
 	}
 
