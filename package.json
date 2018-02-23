@@ -2,7 +2,7 @@
     "name": "jasonetor",
     "displayName": "Jasonetor",
     "description": "Jasonetor (JaSONE[di]tor) - An (eventually) friendly JSON renderer and graphic editor extension for Visual Studio Code.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "guillegr123",
     "author": {
         "name": "Guillermo Gutierrez",
