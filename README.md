@@ -20,13 +20,10 @@ None, for the time being.
 * Does not work without internet connection.
 * Does not keep node expand and selection, when JSON is edited.
 
-## Release Notes
-
-### 0.0.1
-
-- JSON tree view.
-- Node selection highlighting.
-
 ## Source
 
 [GitHub](https://github.com/guillegr123/jasonetor-ext-vscode)
+
+## License
+
+This extension is licensed under [Apache License 2.0](https://github.com/guillegr123/jasonetor-ext-vscode/blob/master/LICENSE).
