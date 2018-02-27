@@ -1,29 +1,30 @@
-# Jasonetor
+# jasonetor
 
-Jasonetor (JaSONE[di]tor) - An (eventually) friendly JSON renderer and graphic editor extension for Visual Studio Code.
+> Jasonetor (JaSONE[di]tor) - An (eventually) friendly JSON renderer and graphic editor extension for Visual Studio Code.
 
-## Features
+## Build Setup
 
-Currently allows to visualize JSON in a tree view, and select nodes.
+``` bash
+# install dependencies
+npm install
 
-As a very very very early version, is not optimized, and requires internet connection. Please bear with the developer ;)
+# serve with hot reload at localhost:8080
+npm run dev
 
-## Available Commands
-* JSON Editor (extension.jsonSideEditor)
+# build for production with minification
+npm run build
 
-## Extension Settings
+# build for production and view the bundle analyzer report
+npm run build --report
 
-None, for the time being.
+# run unit tests
+npm run unit
 
-## Known Issues
+# run e2e tests
+npm run e2e
 
-* Does not work without internet connection.
-* Does not keep node expand and selection, when JSON is edited.
+# run all tests
+npm test
+```
 
-## Source
-
-[GitHub](https://github.com/guillegr123/jasonetor-ext-vscode)
-
-## License
-
-This extension is licensed under [Apache License 2.0](https://github.com/guillegr123/jasonetor-ext-vscode/blob/master/LICENSE).
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
