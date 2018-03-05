@@ -5,9 +5,27 @@
 </template>
 
 <script>
+import TreeView from './components/TreeView'
+
 export default {
   name: 'App',
-  components: 'TreeView'
+  components: {
+    TreeMenu: TreeView // Component does not use the internal 'name', but the one defined here, traslated from camelCase or PascalCase to kebab-case
+  },
+  data () {
+    return {
+      tree: {
+        'test': {
+          'nestedObject': [
+            'this',
+            'is',
+            1,
+            'array'
+          ]
+        }
+      }
+    }
+  }
 }
 </script>
 
